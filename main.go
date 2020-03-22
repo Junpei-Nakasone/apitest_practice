@@ -19,6 +19,7 @@ func newApp() *application {
 	app := echo.New()
 
 	app.GET("/user/:id", getUser)
+	app.GET("/add", add)
 
 	return &application{
 		app: app,
@@ -27,6 +28,10 @@ func newApp() *application {
 
 func (a *application) start() {
 	a.app.Logger.Fatal(a.app.Start("localhost:8888"))
+}
+
+func add(c echo.Context) error {
+	return c.JSON(http.StatusOK, 2)
 }
 
 func getUser(c echo.Context) error {

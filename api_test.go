@@ -28,3 +28,13 @@ func TestGetUser_Success(t *testing.T) {
 		Status(http.StatusOK).
 		End()
 }
+
+func TestAdd(t *testing.T) {
+	apitest.New().
+		Handler(newApp().app).
+		Get("/add").
+		Expect(t).
+		Body(`2`).
+		Status(http.StatusOK).
+		End()
+}
